@@ -1,0 +1,27 @@
+.wrapper {
+  width: 100%;
+}
+
+.message {
+  height: 400px;
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.form-input {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#m {
+  width: 90%;
+  height: 20px;
+}
+
+form button {
+  width: 8%; 
+  background: rgb(130, 224, 255); 
+  border: none; 
+  padding: 10px;
+}
