@@ -21,17 +21,23 @@
   <script src="http://localhost:4040/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
-    $(function () {
       const socket = io();
+
+      socket.on('connect', function () {
+        socket.emit('addUser', prompt('What is your name?'));
+      });
+
+    $(function () {
+
       $('form').submit(function (e) {
         e.preventDefault();
-        socket.emit('chat message', $('#m').val());
+        socket.emit('chatMessage', $('#m').val());
         $('#m').val('');
         return false;
       });
       
-      socket.on('chat message', function(msg) {
-        $('#messages').append($('<li>').text(msg));
+      socket.on('chatMessage', function(username, msg) {
+        $('#messages').append('<li><b>' + username + ':</b> ' + msg + '</li>');
       });
     });
   </script>

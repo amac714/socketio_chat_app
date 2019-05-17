@@ -11,15 +11,26 @@ const io = require("socket.io").listen(server);
 
 let userNames = {};
 
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
 
   //socket.on add user function(username)
-  // add username as socket atribute
-  //socket.username = username
-  //userNames[username] = username
+  socket.on('addUser', function(username) {
+    // add username as socket atribute
+    socket.username = username;
+    userNames[username] = username;
+    
+    socket.emit('chatMessage', 'Server', 'You have connected');
+  });
+  
 
-  socket.on('chat message', function(msg) {
-    io.emit('chat message', msg);
+  socket.on('chatMessage', function(msg) {
+    io.sockets.emit('chatMessage', socket.username, msg);
+  });
+
+  socket.on('disconnect', function() {
+    delete userNames[socket.username];
+
+    socket.broadcast.emit('chatMessage', 'Server', `${socket.username} has disconnected`);
   });
 
 });
