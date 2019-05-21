@@ -1,6 +1,8 @@
 # socketIO_chat_app
 
-Simple chat up to learn basics of socket.io
+Simple chat app to learn basics of socket.io
+
+Built with Node.js and jQuery
 
 # To do
 ~~allow usernames~~
