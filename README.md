@@ -3,6 +3,6 @@
 Simple chat up to learn basics of socket.io
 
 # To do
-allow usernames
+~~allow usernames
 
 show who is online
